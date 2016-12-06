@@ -1,0 +1,2 @@
+class BakeJob < ApplicationRecord
+end
