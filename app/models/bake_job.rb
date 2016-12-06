@@ -23,11 +23,15 @@ class BakeJob < ApplicationRecord
     number_of_baking_items < OVENS
   end
 
+  def completion_time
+    started_at + estimated_time_to_completion_in_seconds.seconds
+  end
+
   def update_current_state
-    if completed_at < Time.current && baking_capcity
+    if baking? &&completion_time < Time.current && baking_capcity
       update(state: :done, completed_at: Time.current)
     elsif baking_capcity
-      update(state: :baking, started_at: Time.current)
+      update(state: :baking, started_at: Time.current) unless baking?
     end
   end
 end

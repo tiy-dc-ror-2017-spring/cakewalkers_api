@@ -26,12 +26,15 @@ Sample Output
 ```
 [
   {
-  "completed_at": "2016-12-06T22:11:40.644Z",
   "id": 1,
+  "product_id": 203,
+  "completed_at": null,
+  "quantity": 10,
+  "estimated_time_to_completion_in_seconds": 3003,
+  "started_at": "2016-12-06T22:02:58.430Z",
   "state": "baking",
-  "product_id": 1,
-  "created_at": "2016-12-06T21:43:21.667Z",
-  "updated_at": "2016-12-06T21:44:51.648Z"
+  "created_at": "2016-12-06T22:01:27.127Z",
+  "updated_at": "2016-12-06T22:02:58.432Z"
   }
 ]
 
