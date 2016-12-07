@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  code: MyString
-  time_to_bake_in_seconds: 1
+muffin:
+  name: Muffin
+  code: 1234-asd
+  time_to_bake_in_seconds: 4
 
-two:
-  name: MyString
-  code: MyString
-  time_to_bake_in_seconds: 1
+cake:
+  name: Cake
+  code: 1234-asdf
+  time_to_bake_in_seconds: 3

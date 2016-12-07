@@ -12,7 +12,7 @@ class BakeJobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bake_job" do
     assert_difference('BakeJob.count') do
-      post bake_jobs_url, params: { bake_job: { completed_at: @bake_job.completed_at, product_id: @bake_job.product_id, state: @bake_job.state } }, as: :json
+      post product_bake_jobs_path(Product.last.code), params: { bake_job: { quantity: rand(5)} }, as: :json
     end
 
     assert_response 201
@@ -21,18 +21,5 @@ class BakeJobsControllerTest < ActionDispatch::IntegrationTest
   test "should show bake_job" do
     get bake_job_url(@bake_job), as: :json
     assert_response :success
-  end
-
-  test "should update bake_job" do
-    patch bake_job_url(@bake_job), params: { bake_job: { completed_at: @bake_job.completed_at, product_id: @bake_job.product_id, state: @bake_job.state } }, as: :json
-    assert_response 200
-  end
-
-  test "should destroy bake_job" do
-    assert_difference('BakeJob.count', -1) do
-      delete bake_job_url(@bake_job), as: :json
-    end
-
-    assert_response 204
   end
 end
