@@ -4,9 +4,22 @@ class BakeJobsController < ApplicationController
   private def current_page
     params[:page] ? params[:page].to_i - 1 : 0
   end
+
   # GET /bake_jobs
   def index
     @bake_jobs = BakeJob.limit(25).offset(current_page)
+    @bake_jobs.each { |e| e.update_current_state  }
+
+    render json: @bake_jobs
+  end
+
+  # GET /bake_jobs/in_oven
+  def in_oven
+    @bake_jobs = BakeJob \
+      .where(state: :baking)
+      .limit(25)
+      .offset(current_page)
+
     @bake_jobs.each { |e| e.update_current_state  }
 
     render json: @bake_jobs
@@ -21,6 +34,7 @@ class BakeJobsController < ApplicationController
   # POST /bake_jobs
   def create
     @product = Product.find_by(code: params[:product_code])
+
     @bake_job = @product.bake_jobs.new(bake_job_params)
 
     if @bake_job.save

@@ -56,7 +56,7 @@ Sample Output
 ```
 
 
-POST /bake_jobs
+POST /bake_jobs/ae0ec581-27dd-40dc-848f-1183e71d4224
 
 Sample Input
 ```
@@ -70,12 +70,15 @@ Sample Input
 Sample Output
 ```
 {
-  "id": 2,
-  "product_id": 1,
-  "completed_at": "2016-12-06T22:20:15.166Z",
-  "state": "waiting",
-  "created_at": "2016-12-06T21:53:27.167Z",
-  "updated_at": "2016-12-06T21:53:27.167Z"
+  "id": 1,
+  "product_id": 203,
+  "completed_at": null,
+  "quantity": 10,
+  "estimated_time_to_completion_in_seconds": 3003,
+  "started_at": "2016-12-06T22:02:58.430Z",
+  "state": "baking",
+  "created_at": "2016-12-06T22:01:27.127Z",
+  "updated_at": "2016-12-06T22:02:58.432Z"
 }
 
 ```
