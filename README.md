@@ -82,3 +82,7 @@ Sample Output
 }
 
 ```
+
+### Delete /bake_jobs/flush_jobs
+
+Switch all jobs to be done. 

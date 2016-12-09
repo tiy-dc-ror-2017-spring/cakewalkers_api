@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :bake_jobs, only: [:index, :show] do
     collection  do
       get :in_oven
+      delete :flush_jobs
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

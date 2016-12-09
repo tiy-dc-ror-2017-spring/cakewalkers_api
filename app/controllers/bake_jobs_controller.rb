@@ -1,5 +1,10 @@
 class BakeJobsController < ApplicationController
   before_action :set_bake_job, only: [:show]
+  before_action :update_states
+
+  private def update_states
+    BakeJob.update_all_states
+  end
 
   private def current_page
     params[:page] ? params[:page].to_i - 1 : 0
@@ -8,8 +13,6 @@ class BakeJobsController < ApplicationController
   # GET /bake_jobs
   def index
     @bake_jobs = BakeJob.limit(25).offset(current_page)
-    @bake_jobs.each { |e| e.update_current_state  }
-
     render json: @bake_jobs
   end
 
@@ -20,14 +23,11 @@ class BakeJobsController < ApplicationController
       .limit(25)
       .offset(current_page)
 
-    @bake_jobs.each { |e| e.update_current_state  }
-
     render json: @bake_jobs
   end
 
   # GET /bake_jobs/1
   def show
-    @bake_job.update_current_state
     render json: @bake_job
   end
 
@@ -42,6 +42,11 @@ class BakeJobsController < ApplicationController
     else
       render json: @bake_job.errors, status: :unprocessable_entity
     end
+  end
+
+  def flush_jobs
+    BakeJob.update_all(state: :done)
+    redirect_to bake_jobs_path
   end
 
 
