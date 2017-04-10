@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :products, only: :index
-
   post "/bake_jobs/:product_code",
        controller: :bake_jobs,
        action: :create,
@@ -12,5 +11,5 @@ Rails.application.routes.draw do
       delete :flush_jobs
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root controller: :welcome, action: :index
 end
