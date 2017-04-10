@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class BakeJobsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -11,8 +11,8 @@ class BakeJobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create bake_job" do
-    assert_difference('BakeJob.count') do
-      post product_bake_jobs_path(Product.last.code), params: { bake_job: { quantity: rand(5)} }, as: :json
+    assert_difference("BakeJob.count") do
+      post product_bake_jobs_path(Product.last.code), params: { bake_job: { quantity: rand(5) } }, as: :json
     end
 
     assert_response 201

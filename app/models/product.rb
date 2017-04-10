@@ -1,4 +1,4 @@
-require 'securerandom'
+require "securerandom"
 class Product < ApplicationRecord
   has_many :bake_jobs
   before_save :create_code, on: :create

@@ -19,9 +19,9 @@ class BakeJobsController < ApplicationController
   # GET /bake_jobs/in_oven
   def in_oven
     @bake_jobs = BakeJob \
-      .where(state: :baking)
-      .limit(25)
-      .offset(current_page)
+                 .where(state: :baking)
+                 .limit(25)
+                 .offset(current_page)
 
     render json: @bake_jobs
   end
@@ -49,15 +49,15 @@ class BakeJobsController < ApplicationController
     redirect_to bake_jobs_path
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bake_job
-      @bake_job = BakeJob.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def bake_job_params
-      params.require(:bake_job).permit(:quantity)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bake_job
+    @bake_job = BakeJob.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def bake_job_params
+    params.require(:bake_job).permit(:quantity)
+  end
 end

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class BakeJobTest < ActiveSupport::TestCase
   test "when back job is done it update state will progress" do
@@ -14,7 +14,7 @@ class BakeJobTest < ActiveSupport::TestCase
     end
   end
 
-  test "overfilled oven"  do
+  test "overfilled oven" do
     BakeJob.create(product: Product.first)
     BakeJob.create(product: Product.first)
     BakeJob.create(product: Product.first)
@@ -31,7 +31,5 @@ class BakeJobTest < ActiveSupport::TestCase
       assert BakeJob.baking_capacity
       assert_equal BakeJob.number_of_baking_items, 1
     end
-
-
   end
 end

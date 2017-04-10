@@ -1,9 +1,9 @@
 class BakeJob < ApplicationRecord
   belongs_to :product
   enum state: {
-     waiting: 0,
-     baking: 1,
-     done: 2
+    waiting: 0,
+    baking: 1,
+    done: 2
   }
 
   OVENS = 3
@@ -26,11 +26,10 @@ class BakeJob < ApplicationRecord
       update(state: :baking, started_at: Time.current) unless baking?
     end
   end
-  
-  class << self
 
+  class << self
     def update_all_states
-      all.map { |e| e.update_current_state  }
+      all.map(&:update_current_state)
     end
 
     def number_of_baking_items
@@ -40,6 +39,5 @@ class BakeJob < ApplicationRecord
     def baking_capacity
       number_of_baking_items < OVENS
     end
-
   end
 end
